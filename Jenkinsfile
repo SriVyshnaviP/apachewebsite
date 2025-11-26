@@ -8,12 +8,13 @@ pipeline {
     stages {
         stage('Clone Git repository') {
             steps {
-                 git 'https://github.com/akshu20791/apachewebsite/'
+                git 'https://github.com/SriVyshnaviP/apachewebsite'
             }
         }
         stage('run ansibleplaybook'){
           steps{
             ansiblePlaybook credentialsId: 'ansible-ssh', installation: 'ansible2', inventory: 'inventory.ini', playbook: 'installapche.yml', vaultTmpPath: ''
+        
           }
         }
        stage('Docker Build & Push') {
